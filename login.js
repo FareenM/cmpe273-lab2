@@ -5,9 +5,11 @@
 function Login() {
 	// sessionId -> user map
 	this.sessionMap = {
-		99999 : { name: 'Foo', email: 'foo@bar.com' }
+		99999 : { name: 'Fareen', email: 'abc@gmail.com' }
 	};
 }
+
+
 /**
  * Say Hello {name} to the user
  */
@@ -36,16 +38,25 @@ Login.prototype.login = function(_name, _email) {
 	
 	return sessionId;
 };
+ 
+ 
 
 /**
  * Logout from the server
  */ 
 Login.prototype.logout = function(sessionId) {
 	console.log('logout::' + sessionId);
-   /*
-	* TODO: Remove the given sessionId from the sessionMap
-	*/
+	if(sessionId in this.sessionMap)
+	{
+		delete this.sessionMap[sessionId];
+		console.log("Logout")
+	}
+	 else 
+	 {
+	 	console.log("Not found");
+       }
 };
 
 // Export the Login class
 module.exports = new Login();
+
